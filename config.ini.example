@@ -1,0 +1,9 @@
+[test]
+# example root directory, replace it with your local path
+root_directory = /Volumes/Server/tools/test
+# supports [7.2|7.3|7.4]
+php.version = 7.4
+# supports [0|1]
+php.xdebug_enabled = 1
+nginx.server_name = test.local
+vm.provider = parallels
