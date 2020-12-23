@@ -3,7 +3,7 @@
 projectName=$1
 
 docker-machine start "${projectName}"
-rootDirectory=$(./lib/config-reader/config.sh "$projectName" 'root_directory')
+rootDirectory=$($(dirname $0)/config-reader/config.sh "$projectName" 'root_directory')
 cd "${rootDirectory}/docker"
 eval $(docker-machine env "${projectName}")
 docker-compose up -d;
