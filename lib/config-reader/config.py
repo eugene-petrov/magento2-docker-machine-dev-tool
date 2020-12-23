@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import sys, getopt, configparser
+import sys, getopt, configparser, os
 
 def main(argv):
    projectName = ''
@@ -23,7 +23,7 @@ def main(argv):
    try:
        config = configparser.ConfigParser()
        config.sections()
-       config.read('config.ini')
+       config.read(os.path.abspath(sys.argv[0] + '../../../../config.ini'))
        settingValue = config[projectName][setting]
        print(settingValue)
    except:

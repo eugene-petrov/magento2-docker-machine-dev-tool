@@ -10,6 +10,9 @@
 3) run `m2dmt create {your_project_name}` cmd.
 4) run `m2dmt start {your_project_name}` cmd.
 
+### For mac users
+`alias m2dmt='{local-path}/m2dmt.sh'`
+
 ## List of commands
 
 - create
