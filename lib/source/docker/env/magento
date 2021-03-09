@@ -9,5 +9,5 @@ MAGENTO_ADMIN_LASTNAME=Admin
 MAGENTO_ADMIN_EMAIL=admin@example.com
 MAGENTO_ADMIN_USERNAME=admin
 MAGENTO_ADMIN_PASSWORD=admin123
-MAGENTO_URL=http://nutramedix.local/
-MAGENTO_URL_SECURE=https://nutramedix.local/
+MAGENTO_URL=http://test.local/
+MAGENTO_URL_SECURE=https://test.local/

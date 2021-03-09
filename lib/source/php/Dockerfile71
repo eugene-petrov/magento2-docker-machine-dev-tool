@@ -1,4 +1,4 @@
-ARG PHP_VERSION=7.1-fpm-stretch
+ARG PHP_VERSION=7.1-fpm
 
 FROM php:${PHP_VERSION}
 
@@ -43,7 +43,8 @@ RUN apt-get update \
 RUN apt-get install cron --no-install-recommends -y
 RUN apt-get install mysql-client wget vim -y
 
-RUN echo "memory_limit=2048M" >> /usr/local/etc/php/conf.d/common.ini \
+RUN echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/common.ini \
+    && echo "max_input_vars=2000" >> /usr/local/etc/php/conf.d/common.ini \
 	&& echo "max_execution_time=1000" >> /usr/local/etc/php/conf.d/common.ini \
 	&& echo "max_input_time=1000" >> /usr/local/etc/php/conf.d/common.ini \
 	&& echo "sendmail_path = '/usr/local/bin/mhsendmail --smtp-addr=\"mailhog:1025\"'" >> /usr/local/etc/php/conf.d/common.ini
