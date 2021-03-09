@@ -1,7 +1,7 @@
 #!/bin/sh
 
 projectName=$1
-§build=$2
+build=$2
 
 docker-machine start "${projectName}"
 rootDirectory=$($(dirname $0)/config-reader/config.sh "$projectName" 'root_directory')
