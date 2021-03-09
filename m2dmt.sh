@@ -1,7 +1,8 @@
 #!/bin/sh
 
 command=$1;
-projectName=$2
+projectName=$2;
+build=$3;
 
 if [ "${command}" == 'create' ]; then
     echo 'NOTE: building process is starting...';
@@ -11,7 +12,7 @@ fi
 
 if [ "${command}" == 'start' ]; then
     echo 'NOTE: starting...';
-    $(dirname $0)/lib/start.sh "$projectName";
+    $(dirname $0)/lib/start.sh "$projectName" "$build";
     exit;
 fi
 
