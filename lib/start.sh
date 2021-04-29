@@ -5,6 +5,12 @@ build=$2
 
 docker-machine start "${projectName}"
 rootDirectory=$($(dirname $0)/config-reader/config.sh "$projectName" 'root_directory')
+
+if [ ! -f "${rootDirectory}/docker" ]; then
+    echo "Or use: \"m2dmt create $projectName\""
+    exit;
+fi
+
 cd "${rootDirectory}/docker"
 eval $(docker-machine env "${projectName}")
 if [ "build" == "${build}" ]
