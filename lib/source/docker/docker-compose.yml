@@ -24,6 +24,7 @@ services:
     command: sudo bash -c "/usr/sbin/sshd && /usr/local/sbin/php-fpm"
     ports:
       - "2222:22"
+      - "9003:9003"
     depends_on:
       - mysql
       - redis
