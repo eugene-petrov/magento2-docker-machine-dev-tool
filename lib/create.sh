@@ -34,7 +34,7 @@ phpVersion=$($(dirname $0)/config-reader/config.sh "$projectName" 'php.version')
 phpVersionPrefix="${phpVersion//\./}"
 destinationPhpDockerFile="$rootDirectory/docker/build/php/Dockerfile"
 cp "$(dirname $0)/source/php/Dockerfile$phpVersionPrefix" "$destinationPhpDockerFile"
-hostIp=$(docker-machine env test | grep DOCKER_HOST | awk -F':' '{print $2}' | awk -F'//' '{print $2}')
+hostIp=$(docker-machine env $projectName | grep DOCKER_HOST | awk -F':' '{print $2}' | awk -F'//' '{print $2}')
 sed -i "" "s/{remote_host_ip}/$hostIp/" "$destinationPhpDockerFile"
 
 docker-machine stop "$projectName";

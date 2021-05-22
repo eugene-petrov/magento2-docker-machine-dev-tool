@@ -13,7 +13,7 @@ echo -e "${RED}Please, wait until MySQL wakes up${NC}"
 
 set -e
 
-while ! mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_ROOT_PASSWORD" -e 'show databases;'; do
+while ! mysql -h "$MYSQL_HOST" -u "$DEFAULT_MYSQL_USER" -p"$MYSQL_ROOT_PASSWORD" -e 'show databases;'; do
   >&2 echo "MySQL is unavailable - sleeping. Please wait"
   sleep 15
 done
@@ -25,8 +25,8 @@ if [ ! -f /var/www/source/app/etc/env.php ]; then
 	sleep 5
 
 	echo "Create databases"
-    mysql -u${MYSQL_USER} -p"${MYSQL_ROOT_PASSWORD}" -h ${MYSQL_HOST} -e "CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE} CHARACTER SET UTF8; \
-    GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
+    mysql -u${DEFAULT_MYSQL_USER} -p"${MYSQL_ROOT_PASSWORD}" -h ${MYSQL_HOST} -e "CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE} CHARACTER SET UTF8; \
+    GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${DEFAULT_MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 
   echo "Install magento"
 
@@ -40,7 +40,7 @@ if [ ! -f /var/www/source/app/etc/env.php ]; then
 	  --currency=$MAGENTO_DEFAULT_CURRENCY \
 	  --db-host=$MYSQL_HOST \
 	  --db-name=$MYSQL_DATABASE \
-	  --db-user=$MYSQL_USER \
+	  --db-user=$DEFAULT_MYSQL_USER \
 	  --db-password=$MYSQL_ROOT_PASSWORD \
 	  --use-secure=$MAGENTO_USE_SECURE \
 	  --base-url-secure=$MAGENTO_BASE_URL_SECURE \
